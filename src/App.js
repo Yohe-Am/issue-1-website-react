@@ -1,9 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { connect } from 'react-redux'
+import { ReduxedSignInForm } from "./features/user/form-signin/SignIn";
 import './App.css';
+function App({ isLoggedIn, username }) {
 
-function App() {
+  if (isLoggedIn) {
+    return <p>Logged In as {username} !</p>;
+  }
+
+  return (
+    <ReduxedSignInForm />
+  );
+}
+
+const ReduxedApp = connect(
+  state => {
+    return {
+      isLoggedIn: state.user.isLoggedIn,
+      username: state.user.username,
+    }
+  },
+)(App);
+
+export default ReduxedApp;
+
+// import logo from './logo.svg';
+// import { Counter } from './features/counter/Counter';
+/* function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -54,5 +77,4 @@ function App() {
     </div>
   );
 }
-
-export default App;
+ */

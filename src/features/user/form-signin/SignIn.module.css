@@ -1,0 +1,10 @@
+.signInForm {
+  padding: 40px;
+  display: grid;
+  grid: auto;
+}
+
+.signInForm * {
+  display: block;
+  margin: 1rem;
+}
