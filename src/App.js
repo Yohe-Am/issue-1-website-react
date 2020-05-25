@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { ReduxedSignInForm } from "./features/user/form-signin/SignIn";
+import { ReduxedMainFeed } from "./features/feed/MainFeed.js";
+import { isLoggedIn } from "./features/user/userSlice.js";
 import './App.css';
+
 function App({ isLoggedIn, username }) {
 
   if (isLoggedIn) {
-    return <p>Logged In as {username} !</p>;
+    return (
+      <ReduxedMainFeed />
+    );
   }
 
   return (
@@ -16,7 +21,7 @@ function App({ isLoggedIn, username }) {
 const ReduxedApp = connect(
   state => {
     return {
-      isLoggedIn: state.user.isLoggedIn,
+      isLoggedIn: isLoggedIn(state),
       username: state.user.username,
     }
   },

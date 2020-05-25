@@ -3,7 +3,6 @@
 ## TO-DO
 
 - [ ] Front Page
-- [ ] Get React Router
 
 ## design-doc
 
